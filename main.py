@@ -43,7 +43,7 @@ def stop(message):
 @bot.message_handler(content_types=["text"])
 def text(message):
 	if message.text == '1':
-		url = 'https://drive.google.com/file/d/1d8FGozo0r65SRHDZ7AdKWZVOp87qoe6D/preview'
+		url = 'https://ibb.co/zbqNj2q'
 		urllib2.urlretrieve(url, 'Синий и Розовый Поддержка Клиентов Блок-Схема.png')
 		img = open('Синий и Розовый Поддержка Клиентов Блок-Схема.png', 'rb')
 		#img = open('./image/G.jpg')

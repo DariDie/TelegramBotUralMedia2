@@ -64,9 +64,13 @@ def text(message):
 			print("temp:", data['main']['temp'])
 			print("temp_min:", data['main']['temp_min'])
 			print("temp_max:", data['main']['temp_max'])
+
+			bot.send_message(message.from_user.id, "Условия:" + data['weather'][0]['description'])
+			#bot.send_message(message.from_user.id, 'Ссылка на маршрут: https://i.ibb.co/GsVDNQH/0-Lus2-Gx-Qesk.jpg')
+			#bot.send_message(message.from_user.id, 'Ссылка на маршрут: https://i.ibb.co/GsVDNQH/0-Lus2-Gx-Qesk.jpg')
+			#bot.send_message(message.from_user.id, 'Ссылка на маршрут: https://i.ibb.co/GsVDNQH/0-Lus2-Gx-Qesk.jpg')
 		except Exception as e:
 			print("Exception (weather):", e)
-			bot.send_message(message.from_user.id, e)
 			pass
 
 

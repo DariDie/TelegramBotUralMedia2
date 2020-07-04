@@ -54,7 +54,7 @@ def text(message):
         #masphoto = ['https://i.ibb.co/xsWtrcK/1.png','https://i.ibb.co/xsWtrcK/1.png']
         #bot.send_media_group(message.from_user.id,masphoto)
 
-    if message.text == 'Прогулки':
+    #if message.text == 'Прогулки':
 
 
     if message.text == 'Узнать погоду в городе':

@@ -63,7 +63,7 @@ def text(message):
             data = res.json()
             bot.send_message(message.from_user.id, "Условия: " + data['weather'][0]['description'])
             temperature = data['main']['temp']
-            bot.send_message(message.from_user.id, str(temperature))
+            bot.send_message(message.from_user.id, "Температура: " + str(temperature))
 
         except Exception as e:
             print("Exception (weather):", e)

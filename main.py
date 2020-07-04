@@ -64,7 +64,8 @@ def text(message):
             print("conditions:", data['weather'][0]['description'])
             bot.send_message(message.from_user.id, "Условия: " + data['weather'][0]['description'])
             print("temp:", data['main']['temp'])
-            bot.send_message(message.from_user.id, "Температура: " + data['main']['temp'])
+            a = "temp:" + data['main']['temp']
+            bot.send_message(message.from_user.id, a)
             print("temp_min:", data['main']['temp_min'])
             bot.send_message(message.from_user.id, "Максимальная температура: " + data['main']['temp_min'])
             print("temp_max:", data['main']['temp_max'])

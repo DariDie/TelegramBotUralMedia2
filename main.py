@@ -1,6 +1,7 @@
 import os, io
 import telebot
 import logging
+import urllib.request as urllib2
 from flask import Flask, request
 
 
@@ -22,15 +23,31 @@ def get_filer_by_id(file_id):
 	user_photo.seek(0)
 	return user_photo
 
+#Можно сделать текст кнопки эмодзи
 
 @bot.message_handler(commands=['start'])
 def start(message):
-	bot.send_message(message.chat.id, "Привет! Пришли мне фото!")
+	#bot.send_message(message.chat.id, "Привет! Пришли мне фото!")
+	user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
+	user_markup.row('/start', '/stop')
+	user_markup.row('1', '2', '3')
+	bot.send_message(message.from_user.id, 'Добро пожаловать...', reply_markup=user_markup)
+
+@bot.message_handler(commands=['stop'])
+def stop(message):
+	hide_markup = telebot.types.ReplyKeyboardHide()
+	bot.send_message(message.from_user.id, '..', reply_markup=hide_markup)
+
 
 
 @bot.message_handler(content_types=["text"])
 def text(message):
-	bot.send_message(message.chat.id, "Нет, пришли фото!")
+	if message.text == '1':
+		url = 'https://drive.google.com/file/d/1d8FGozo0r65SRHDZ7AdKWZVOp87qoe6D/view?usp=sharing'
+		urllib2.urlretrieve(url, 'Синий и Розовый Поддержка Клиентов Блок-Схема.png')
+		img = open('Синий и Розовый Поддержка Клиентов Блок-Схема.png', 'rb')
+		bot.send_chat_action(message.from_user.id, 'upload_photo')
+		bot.send_photo(message.from_user.id, img)
 
 
 @server.route("/", methods=['POST'])

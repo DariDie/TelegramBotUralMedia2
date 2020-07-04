@@ -3,6 +3,7 @@ import telebot
 import logging
 import urllib.request as urllib2
 import requests
+from telebot.types import InputMediaPhoto
 from flask import Flask, request
 
 TOKEN = os.environ.get("APIKEY")
@@ -51,8 +52,11 @@ def text(message):
         bot.send_chat_action(message.from_user.id, 'upload_photo')
         bot.send_photo(message.from_user.id, img, 'Для знакомства с городом и его красотами предлагаю тебе следующий маршрут ⬆ \nP.S. Отметил тебе там интересные граффити по пути, на их фоне красивые фотокарточки тебе обеспечены 😉  \nСсылка на маршрут: '
                                                   'https://www.google.com/maps/d/edit?mid=1IiH2vVc59QbSYIV0dXVijYVuXKNaYTJY&usp=sharing')
-        #masphoto = ['https://i.ibb.co/xsWtrcK/1.png','https://i.ibb.co/xsWtrcK/1.png']
-        #bot.send_media_group(message.from_user.id,masphoto)
+        bot.send_media_group(message.from_user.id,
+                             [InputMediaPhoto('https://i.ibb.co/xsWtrcK/1.png'),
+                              InputMediaPhoto('https://i.ibb.co/xsWtrcK/1.png'),
+                              InputMediaPhoto('https://i.ibb.co/xsWtrcK/1.png'),
+                                ])
 
     #if message.text == 'Прогулки':
 

@@ -64,7 +64,7 @@ def text(message):
             bot.send_message(message.from_user.id, "Условия: " + data['weather'][0]['description'])
             temperature = data['main']['temp']
             #print(temperature)
-            bot.send_message(message.from_user.id, "Температура" + type(str(temperature)))
+            bot.send_message(message.from_user.id, temperature)
             #bot.send_message(message.from_user.id, "Температура " + data['main']['temp'])
 
         except Exception as e:

@@ -2,13 +2,14 @@ import os, io
 import telebot
 import logging
 import urllib.request as urllib2
+import requests
 from flask import Flask, request
 
 
 TOKEN = os.environ.get("APIKEY")
 WEBHOOK_URL = os.environ.get("MYURL")
 
-bot =telebot.TeleBot(TOKEN)
+bot = telebot.TeleBot(TOKEN)
 server = Flask(__name__)
 
 logger = telebot.logger
@@ -50,6 +51,23 @@ def text(message):
 		bot.send_photo(message.from_user.id, img)
 		bot.send_message(message.from_user.id, 'Графити "Вартовчанка')
 		bot.send_message(message.from_user.id, 'Ссылка на маршрут: https://i.ibb.co/GsVDNQH/0-Lus2-Gx-Qesk.jpg')
+
+	if message.text == '2':
+		s_city = "Nizhnevartovsk,RU"
+		city_id = 0
+		appid = 'd230fcb17786fe3d64e9332ee331e2f9'
+		try:
+			res = requests.get("http://api.openweathermap.org/data/2.5/find",
+							   params={'q': s_city, 'type': 'like', 'units': 'metric', 'APPID': appid})
+			data = res.json()
+			cities = ["{} ({})".format(d['name'], d['sys']['country'])
+					  for d in data['list']]
+			print("city:", cities)
+			city_id = data['list'][0]['id']
+			print('city_id=', city_id)
+		except Exception as e:
+			print("Exception (find):", e)
+			pass
 
 
 @server.route("/", methods=['POST'])

@@ -46,10 +46,10 @@ def text(message):
 		url = 'https://i.ibb.co/GsVDNQH/0-Lus2-Gx-Qesk.jpg'
 		urllib2.urlretrieve(url, '0-Lus2-Gx-Qesk.jpg')
 		img = open('0-Lus2-Gx-Qesk.jpg', 'rb')
-		#img = open('./image/G.jpg')
 		bot.send_chat_action(message.from_user.id, 'upload_photo')
 		bot.send_photo(message.from_user.id, img)
-		#img.close()
+		bot.send_message(message.from_user.id, 'Графити "Вартовчанка')
+		bot.send_message(message.from_user.id, 'Ссылка на маршрут: https://i.ibb.co/GsVDNQH/0-Lus2-Gx-Qesk.jpg')
 
 
 @server.route("/", methods=['POST'])

@@ -66,7 +66,9 @@ def text(message):
 			print("temp_max:", data['main']['temp_max'])
 		except Exception as e:
 			print("Exception (weather):", e)
+			bot.send_message(message.from_user.id, e)
 			pass
+
 
 
 @server.route("/", methods=['POST'])

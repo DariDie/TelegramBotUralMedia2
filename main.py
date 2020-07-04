@@ -33,7 +33,7 @@ def start(message):
     user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
     user_markup.row('/start', '/stop')
     user_markup.row('1', '2', '3')
-    bot.send_message(message.from_user.id, 'Добро пожаловать...', reply_markup=user_markup)
+    bot.send_message(message.from_user.id, 'Привет!😁 Судя по всему, ты собираешься в путешествие', reply_markup=user_markup)
 
 
 @bot.message_handler(commands=['stop'])

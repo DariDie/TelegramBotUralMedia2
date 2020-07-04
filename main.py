@@ -63,7 +63,7 @@ def text(message):
             data = res.json()
             #print("conditions:", data['weather'][0]['description'])
             bot.send_message(message.from_user.id, "Условия: " + data['weather'][0]['description'])
-            bot.send_message(message.from_user.id, "Температура:  " + data['main']['temp'])
+            bot.send_message(message.from_user.id, '123')
             #print("temp:", data['main']['temp'])
             a = "temp:" + data['main']['temp']
             bot.send_message(message.chat.id, 'привет блин, где моя температура')

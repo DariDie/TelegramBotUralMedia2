@@ -61,15 +61,9 @@ def text(message):
             res = requests.get("http://api.openweathermap.org/data/2.5/weather",
                                params={'id': city_id, 'units': 'metric', 'lang': 'ru', 'APPID': appid})
             data = res.json()
-            #print("conditions:", data['weather'][0]['description'])
             bot.send_message(message.from_user.id, "Условия: " + data['weather'][0]['description'] + "\nТемпература" + data['main']['temp'] + "123")
-            #print("temp:", data['main']['temp'])
-            a = "temp:" + data['main']['temp']
-            bot.send_message(message.chat.id, 'привет блин, где моя температура')
-            #print("temp_min:", data['main']['temp_min'])
-            bot.send_message(message.from_user.id, "Максимальная температура: " + data['main']['temp_min'])
-            #print("temp_max:", data['main']['temp_max'])
-            bot.send_message(message.from_user.id, "Минимальная температура: " + data['main']['temp_max'])
+            bot.send_message(message.from_user.id, "Температура " + type(str(data['main']['temp'])))
+
         except Exception as e:
             print("Exception (weather):", e)
             pass

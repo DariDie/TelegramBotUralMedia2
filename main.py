@@ -43,9 +43,9 @@ def stop(message):
 @bot.message_handler(content_types=["text"])
 def text(message):
 	if message.text == '1':
-		url = 'https://ibb.co/zbqNj2q'
-		urllib2.urlretrieve(url, 'Синий и Розовый Поддержка Клиентов Блок-Схема.png')
-		img = open('Синий и Розовый Поддержка Клиентов Блок-Схема.png', 'rb')
+		url = 'https://i.ibb.co/5vb2tjb/image.png'
+		urllib2.urlretrieve(url, '1.png')
+		img = open('1.png', 'rb')
 		#img = open('./image/G.jpg')
 		bot.send_chat_action(message.from_user.id, 'upload_photo')
 		bot.send_photo(message.from_user.id, img)

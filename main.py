@@ -31,7 +31,7 @@ def get_filer_by_id(file_id):
 @bot.message_handler(commands=['start'])
 def start(message):
     user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
-    user_markup.row('/start')
+    #user_markup.row('/start')
     user_markup.row('Прогулки', 'Еда', 'Культура')
     user_markup.row('Узнать погоду в городе')
     bot.send_message(message.from_user.id, 'Привет! 🔥 \nСудя по всему, ты собираешься в путешествие, но ещё '
